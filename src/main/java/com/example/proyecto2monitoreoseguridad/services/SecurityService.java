@@ -13,7 +13,8 @@ public class SecurityService {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        return "Tarea completada" + taskName;
+        return "Tarea completada: " + taskName;
     }
+
 
 }

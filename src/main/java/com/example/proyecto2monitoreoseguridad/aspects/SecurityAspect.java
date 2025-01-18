@@ -18,9 +18,13 @@ public class SecurityAspect {
     public Object aroundSecurityMethod(ProceedingJoinPoint joinPoint) throws
             Throwable {
         System.out.println("Inicio de metodo en @Around advice");
+        long startTime = System.currentTimeMillis(); // Inicio del cronómetro
+
         try {
             Object result = joinPoint.proceed();
-            System.out.println("Fin de metodo en @Around advice");
+            long duration = System.currentTimeMillis() - startTime; // Calcula la duración
+
+            System.out.println("Fin de metodo en @Around advice ejecutado en " + duration + "ms");
             return result;
         } catch (Exception e) {
             System.err.println("Error en el método: " + joinPoint.getSignature());

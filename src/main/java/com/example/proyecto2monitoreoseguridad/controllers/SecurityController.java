@@ -19,4 +19,9 @@ public class SecurityController {
         }
         return securityService.performTask(task);
     }
+    @GetMapping("/secure")
+    public String secureEndpoint(@RequestParam String data) {
+        return "Secured data: " + data;
+    }
+
 }

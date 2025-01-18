@@ -14,6 +14,9 @@ public class SecurityController {
 
     @GetMapping("/perform")
     public String performTask(@RequestParam String task){
+        if (task == null || task.isEmpty()) {
+            throw new IllegalArgumentException("El parámetro 'task' no puede estar vacío");
+        }
         return securityService.performTask(task);
     }
 }

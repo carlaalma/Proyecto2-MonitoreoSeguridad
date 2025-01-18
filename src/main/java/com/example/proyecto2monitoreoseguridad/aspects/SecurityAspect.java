@@ -18,9 +18,14 @@ public class SecurityAspect {
     public Object aroundSecurityMethod(ProceedingJoinPoint joinPoint) throws
             Throwable {
         System.out.println("Inicio de metodo en @Around advice");
-        Object result = joinPoint.proceed();
-        System.out.println("Fin de metodo en @Around advice");
-        return result;
+        try {
+            Object result = joinPoint.proceed();
+            System.out.println("Fin de metodo en @Around advice");
+            return result;
+        } catch (Exception e) {
+            System.err.println("Error en el método: " + joinPoint.getSignature());
+            throw e;
+        }
     }
 
 }

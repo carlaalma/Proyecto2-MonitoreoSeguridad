@@ -14,6 +14,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class SecurityControllerTest {
     @Autowired
     private MockMvc mockMvc;
+
+    @Test
+    public void testPerformEndpoint() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/perform?task=testTask"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Tarea completada: testTask"));
+    }
     @Test
     public void testSecureEndpoint() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/secure?data=testData")
